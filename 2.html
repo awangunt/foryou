@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kuis Pilihan Ganda</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .quiz-box {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .option {
+      margin: 10px 0;
+    }
+
+    .option input {
+      margin-right: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-left: 5px solid #007BFF;
+      background: #e7f3ff;
+      display: none;
+    }
+
+    .correct {
+      border-left-color: #28a745;
+      background: #e9f7ec;
+    }
+
+    .wrong {
+      border-left-color: #dc3545;
+      background: #fbebed;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-box">
+    <h2>Kuis Pilihan Ganda</h2>
+
+    <p><strong>do you love me?</strong></p>
+
+    <div class="option">
+      <label><input type="radio" name="answer" value="A"> A. yes</label>
+    </div>
+    <div class="option">
+      <label><input type="radio" name="answer" value="B"> B. no</label>
+    </div>
+
+    <button onclick="checkAnswer()">Cek Jawaban</button>
+    <button><a href="3.html">next</a></button>
+
+    <div class="result" id="resultBox">
+      <span id="resultText"></span>
+    </div>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      const resultBox = document.getElementById('resultBox');
+      const resultText = document.getElementById('resultText');
+
+      if (!selected) {
+        alert('Silakan pilih salah satu jawaban!');
+        return;
+      }
+
+      const userAnswer = selected.value;
+      const correctAnswer = 'A';
+
+      if (userAnswer === correctAnswer) {
+        resultBox.className = 'result correct';
+        resultText.innerHTML = '<strong>Benar!</strong> Is that true?? klik next.';
+      } else {
+        resultBox.className = 'result wrong';
+        resultText.innerHTML = '<strong>Salah.</strong> next.';
+      }
+
+      resultBox.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
